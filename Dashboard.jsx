@@ -423,8 +423,34 @@ const DEFAULT_DATA = {
   gardenTheme: 'morning',            // Chủ đề bầu trời khu vườn
   potStyle: 'natural',               // Kiểu chậu cây đang dùng
   profileName: 'Trạm Trưởng',
-  profileAvatar: '/assets/avatars/chibi-daisy-girl.svg',
+  profileAvatar: '/assets/avatars/chibi-daisy-girl.png',
   selectedAvatarId: 'chibi-daisy-girl'
+};
+
+// Tự động thử tải lại ảnh từ các thư mục dự phòng (/assets/plants/stages/, /stages/, /) nếu đường dẫn chính chưa có trên host
+const tryFallbackStageImg = (e) => {
+  const el = e?.currentTarget || e?.target;
+  if (!el) return false;
+  const src = el.getAttribute('src') || '';
+  let cleanFile = src.split('/').pop()?.split('?')[0] || '';
+  if (!cleanFile) return false;
+  if (cleanFile === 'chibi-daisy-girl.svg') cleanFile = 'chibi-daisy-girl.png';
+  const step = Number(el.dataset.triedStageFallback || '0');
+  const candidates = [
+    `/assets/plants/stages/${cleanFile}`,
+    `/stages/${cleanFile}`,
+    `/assets/avatars/${cleanFile}`,
+    `/assets/mascot/${cleanFile}`,
+    `/assets/tools/${cleanFile}`,
+    `/assets/cards/${cleanFile}`,
+    `/${cleanFile}`
+  ].filter((c) => c !== src);
+  if (step < candidates.length) {
+    el.dataset.triedStageFallback = String(step + 1);
+    el.src = candidates[step];
+    return true;
+  }
+  return false;
 };
 
 export const Dashboard = () => {
@@ -2231,7 +2257,7 @@ export const Dashboard = () => {
                     src={currentUser.img || currentUser.avatar}
                     alt="Avatar"
                     className="w-full h-full object-contain"
-                    onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'block'; }}
+                    onError={(e) => { if (!tryFallbackStageImg(e)) { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'block'; } }}
                   />
                   <span className="hidden">{currentUser.icon || '👩🌾'}</span>
                 </div>
@@ -2390,8 +2416,10 @@ export const Dashboard = () => {
                 alt={currentAvatar.name} 
                 className="w-full h-full object-contain"
                 onError={(e) => {
-                  e.target.style.display = 'none';
-                  e.target.nextSibling.style.display = 'block';
+                  if (!tryFallbackStageImg(e)) {
+                    e.target.style.display = 'none';
+                    if (e.target.nextSibling) e.target.nextSibling.style.display = 'block';
+                  }
                 }}
               />
               <span className="text-xl hidden">{currentAvatar.icon}</span>
@@ -2617,6 +2645,7 @@ export const Dashboard = () => {
                               <img
                                 src="/assets/tools/watering-can.png"
                                 alt="Bình tưới nước"
+                                onError={tryFallbackStageImg}
                                 className="w-full h-full object-contain select-none"
                               />
                             </motion.div>
@@ -2683,6 +2712,7 @@ export const Dashboard = () => {
                               <img
                                 src="/assets/tools/soil-hoe.png?v=2"
                                 alt="Cuốc vun đất"
+                                onError={tryFallbackStageImg}
                                 className="w-full h-full object-contain select-none"
                               />
                             </motion.div>
@@ -2748,6 +2778,7 @@ export const Dashboard = () => {
                               <img
                                 src="/assets/tools/pruning-shears.png"
                                 alt="Kéo tỉa cành"
+                                onError={tryFallbackStageImg}
                                 className="w-full h-full object-contain select-none"
                               />
                             </motion.div>
@@ -2831,8 +2862,10 @@ export const Dashboard = () => {
                                 : 'drop-shadow-[0_12px_16px_rgba(15,23,42,0.16)]'
                             }`}
                             onError={(e) => {
-                              e.target.style.display = 'none';
-                              if (e.target.nextSibling) e.target.nextSibling.style.display = 'block';
+                              if (!tryFallbackStageImg(e)) {
+                                e.target.style.display = 'none';
+                                if (e.target.nextSibling) e.target.nextSibling.style.display = 'block';
+                              }
                             }}
                           />
                           <div 
@@ -2907,7 +2940,7 @@ export const Dashboard = () => {
                               src={MASCOT_SPRITES.excited}
                               alt="Bé Chuột"
                               className="w-full h-full object-contain drop-shadow-sm"
-                              onError={(e) => { e.target.src = '/assets/mascot/mascot-happy.png'; }}
+                              onError={(e) => { if (!tryFallbackStageImg(e)) e.target.src = '/assets/mascot/mascot-happy.png'; }}
                             />
                           </div>
                           <h4 className="font-black text-sm sm:text-base md:text-lg leading-snug drop-shadow-xs">
@@ -2952,6 +2985,7 @@ export const Dashboard = () => {
                             <img
                               src="/assets/tools/watering-can.png"
                               alt="Bình tưới nước"
+                              onError={tryFallbackStageImg}
                               className={`w-full h-full object-contain transition-all duration-300 ${
                                 activeToolAnim === 'water' ? 'opacity-20 scale-50' : 'opacity-100 scale-100'
                               }`}
@@ -2978,6 +3012,7 @@ export const Dashboard = () => {
                             <img
                               src="/assets/tools/soil-hoe.png?v=2"
                               alt="Cuốc vun đất"
+                              onError={tryFallbackStageImg}
                               className={`w-full h-full object-contain transition-all duration-300 ${
                                 activeToolAnim === 'soil' ? 'opacity-20 scale-50' : 'opacity-100 scale-100'
                               }`}
@@ -3004,6 +3039,7 @@ export const Dashboard = () => {
                             <img
                               src="/assets/tools/pruning-shears.png"
                               alt="Kéo tỉa cành"
+                              onError={tryFallbackStageImg}
                               className={`w-full h-full object-contain transition-all duration-300 ${
                                 activeToolAnim === 'snip' ? 'opacity-20 scale-50' : 'opacity-100 scale-100'
                               }`}
@@ -3051,7 +3087,7 @@ export const Dashboard = () => {
                               <span className="text-base w-5 text-center">{rankIcons[idx]}</span>
                               <div className="w-7 h-7 rounded-full bg-white border border-slate-200 flex items-center justify-center overflow-hidden shrink-0 text-sm">
                                 {isImgPath ? (
-                                  <img src={farmer.avatar} alt={farmer.name} className="w-full h-full object-contain" />
+                                  <img src={farmer.avatar} onError={tryFallbackStageImg} alt={farmer.name} className="w-full h-full object-contain" />
                                 ) : (
                                   <span>{farmer.avatar || '🌱'}</span>
                                 )}
@@ -3721,8 +3757,10 @@ export const Dashboard = () => {
                             alt={plant.name} 
                             className="w-full h-full object-contain drop-shadow-[0_10px_12px_rgba(15,23,42,0.15)]"
                             onError={(e) => {
-                              e.target.style.display = 'none';
-                              if (e.target.nextSibling) e.target.nextSibling.style.display = 'block';
+                              if (!tryFallbackStageImg(e)) {
+                                e.target.style.display = 'none';
+                                if (e.target.nextSibling) e.target.nextSibling.style.display = 'block';
+                              }
                             }}
                           />
                           <div
@@ -3780,16 +3818,16 @@ export const Dashboard = () => {
               
               {/* Sticker trang trí xung quanh background */}
               <div className="hidden xl:block absolute -left-8 top-16 w-14 h-14 pointer-events-none opacity-90 transition-transform hover:scale-110">
-                <img src="/assets/avatars/hamster.svg" alt="deco" className="w-full h-full drop-shadow-md" />
+                <img src="/assets/avatars/hamster.svg" onError={tryFallbackStageImg} alt="deco" className="w-full h-full drop-shadow-md" />
               </div>
               <div className="hidden xl:block absolute left-[48%] top-28 w-14 h-14 pointer-events-none opacity-90">
-                <img src="/assets/avatars/shiba.svg" alt="deco" className="w-full h-full drop-shadow-md" />
+                <img src="/assets/avatars/shiba.svg" onError={tryFallbackStageImg} alt="deco" className="w-full h-full drop-shadow-md" />
               </div>
               <div className="hidden xl:block absolute -right-8 top-20 w-14 h-14 pointer-events-none opacity-90">
-                <img src="/assets/avatars/bear-kid.svg" alt="deco" className="w-full h-full drop-shadow-md" />
+                <img src="/assets/avatars/bear-kid.svg" onError={tryFallbackStageImg} alt="deco" className="w-full h-full drop-shadow-md" />
               </div>
               <div className="hidden xl:block absolute -right-8 bottom-12 w-14 h-14 pointer-events-none opacity-90">
-                <img src="/assets/avatars/orange-mascot.svg" alt="deco" className="w-full h-full drop-shadow-md" />
+                <img src="/assets/avatars/orange-mascot.svg" onError={tryFallbackStageImg} alt="deco" className="w-full h-full drop-shadow-md" />
               </div>
 
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
@@ -3809,8 +3847,10 @@ export const Dashboard = () => {
                           alt={currentAvatar.name} 
                           className="w-full h-full object-contain"
                           onError={(e) => {
-                            e.target.style.display = 'none';
-                            e.target.nextSibling.style.display = 'block';
+                            if (!tryFallbackStageImg(e)) {
+                              e.target.style.display = 'none';
+                              if (e.target.nextSibling) e.target.nextSibling.style.display = 'block';
+                            }
                           }}
                         />
                         <span className="text-5xl hidden">{currentAvatar.icon}</span>
@@ -4044,8 +4084,10 @@ export const Dashboard = () => {
                                   alt={a.name} 
                                   className="w-full h-full object-contain rounded-full"
                                   onError={(e) => {
-                                    e.target.style.display = 'none';
-                                    e.target.nextSibling.style.display = 'flex';
+                                    if (!tryFallbackStageImg(e)) {
+                                      e.target.style.display = 'none';
+                                      e.target.nextSibling.style.display = 'flex';
+                                    }
                                   }}
                                 />
                                 <span className="text-2xl hidden w-full h-full items-center justify-center">{a.icon}</span>
@@ -4136,8 +4178,10 @@ export const Dashboard = () => {
                                     alt={farmer.name}
                                     className="w-full h-full object-contain rounded-full"
                                     onError={(e) => {
-                                      e.target.style.display = 'none';
-                                      if (e.target.nextSibling) e.target.nextSibling.style.display = 'block';
+                                      if (!tryFallbackStageImg(e)) {
+                                        e.target.style.display = 'none';
+                                        if (e.target.nextSibling) e.target.nextSibling.style.display = 'block';
+                                      }
                                     }}
                                   />
                                 ) : null}
@@ -4883,7 +4927,7 @@ export const Dashboard = () => {
                   <div className="flex flex-col items-center">
                     <div className="w-14 h-14 rounded-2xl bg-white border-2 border-emerald-200 shadow-xs flex items-center justify-center text-3xl mb-2 overflow-hidden">
                       {visitingNeighbor.img ? (
-                        <img src={visitingNeighbor.img} alt={visitingNeighbor.name} className="w-full h-full object-contain" />
+                        <img src={visitingNeighbor.img} onError={tryFallbackStageImg} alt={visitingNeighbor.name} className="w-full h-full object-contain" />
                       ) : (
                         <span>{visitingNeighbor.avatar || '🏡'}</span>
                       )}
@@ -4901,8 +4945,10 @@ export const Dashboard = () => {
                         alt={nbPlant.name}
                         className="w-full h-full object-contain drop-shadow-[0_12px_16px_rgba(15,23,42,0.16)]"
                         onError={(e) => {
-                          e.target.style.display = 'none';
-                          if (e.target.nextSibling) e.target.nextSibling.style.display = 'block';
+                          if (!tryFallbackStageImg(e)) {
+                            e.target.style.display = 'none';
+                            if (e.target.nextSibling) e.target.nextSibling.style.display = 'block';
+                          }
                         }}
                       />
                       <div
@@ -4994,6 +5040,7 @@ export const Dashboard = () => {
                   <img
                     src={MASCOT_SPRITES[mascotMood] || MASCOT_SPRITES.happy}
                     alt="Bé Trợ Lý Chibi"
+                    onError={tryFallbackStageImg}
                     className="w-full h-full object-contain"
                   />
                 </div>
@@ -5051,6 +5098,7 @@ export const Dashboard = () => {
                         <img
                           src={MASCOT_SPRITES[msg.mood || mascotMood] || MASCOT_SPRITES.happy}
                           alt="Mascot"
+                          onError={tryFallbackStageImg}
                           className="w-full h-full object-contain"
                         />
                       </div>
@@ -5076,7 +5124,7 @@ export const Dashboard = () => {
               {isAiTyping && (
                 <div className="flex items-end gap-2 justify-start">
                   <div className="w-8 h-8 rounded-xl bg-white border border-amber-200 p-0.5 shrink-0 shadow-2xs">
-                    <img src={MASCOT_SPRITES.thinking} alt="Thinking" className="w-full h-full object-contain" />
+                    <img src={MASCOT_SPRITES.thinking} alt="Thinking" onError={tryFallbackStageImg} className="w-full h-full object-contain" />
                   </div>
                   <div className="px-3.5 py-2 rounded-2xl rounded-bl-none text-xs font-bold italic animate-pulse border bg-white text-amber-700 border-amber-200">
                     🤔 Bé Chuột đang suy nghĩ câu trả lời...
@@ -5287,6 +5335,7 @@ export const Dashboard = () => {
             <img
               src={MASCOT_SPRITES[mascotMood] || MASCOT_SPRITES.happy}
               alt="Bé Trợ Lý Chuột Chibi"
+              onError={tryFallbackStageImg}
               draggable={false}
               className="w-full h-full object-contain select-none pointer-events-none"
             />
