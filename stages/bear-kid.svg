@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <defs>
+    <radialGradient id="bearBg" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#FFF7ED"/>
+      <stop offset="100%" stop-color="#FFEDD5"/>
+    </radialGradient>
+    <linearGradient id="hoodGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#A16207"/>
+      <stop offset="100%" stop-color="#78350F"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background Circle -->
+  <circle cx="50" cy="50" r="46" fill="url(#bearBg)" stroke="#FED7AA" stroke-width="2.5"/>
+
+  <!-- Bear Ears -->
+  <circle cx="30" cy="30" r="9" fill="#78350F"/>
+  <circle cx="30" cy="30" r="5.5" fill="#FEF08A"/>
+  <circle cx="70" cy="30" r="9" fill="#78350F"/>
+  <circle cx="70" cy="30" r="5.5" fill="#FEF08A"/>
+
+  <!-- Bear Hoodie Body -->
+  <path d="M 28 86 Q 28 66 38 66 L 62 66 Q 72 66 72 86 Z" fill="url(#hoodGrad)"/>
+
+  <!-- Bear Hood Shape Around Head -->
+  <circle cx="50" cy="46" r="24" fill="url(#hoodGrad)"/>
+
+  <!-- Face Hole -->
+  <ellipse cx="50" cy="48" rx="16" ry="14" fill="#FFEDD5"/>
+
+  <!-- Kid's Bangs -->
+  <path d="M 37 40 Q 44 45 50 41 Q 56 45 63 40 Q 58 35 50 35 Q 42 35 37 40 Z" fill="#451A03"/>
+
+  <!-- Eyes -->
+  <circle cx="43" cy="47" r="2.8" fill="#1C1917"/>
+  <circle cx="44" cy="46" r="1" fill="#FFFFFF"/>
+  <circle cx="57" cy="47" r="2.8" fill="#1C1917"/>
+  <circle cx="58" cy="46" r="1" fill="#FFFFFF"/>
+
+  <!-- Blush -->
+  <ellipse cx="38" cy="51" rx="3.5" ry="2" fill="#FB7185" opacity="0.6"/>
+  <ellipse cx="62" cy="51" rx="3.5" ry="2" fill="#FB7185" opacity="0.6"/>
+
+  <!-- Smile -->
+  <path d="M 47 52 Q 50 55 53 52" fill="none" stroke="#78350F" stroke-width="1.6" stroke-linecap="round"/>
+
+  <!-- Hands Holding Sprout -->
+  <circle cx="43" cy="68" r="4" fill="#A16207"/>
+  <circle cx="57" cy="68" r="4" fill="#A16207"/>
+
+  <!-- Green Sprout -->
+  <path d="M 50 68 L 50 62" stroke="#16A34A" stroke-width="2" stroke-linecap="round"/>
+  <path d="M 50 62 C 46 58, 42 62, 50 62 Z" fill="#22C55E"/>
+  <path d="M 50 62 C 54 58, 58 62, 50 62 Z" fill="#4ADE80"/>
+</svg>

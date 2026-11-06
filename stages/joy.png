@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <defs>
+    <radialGradient id="joyGrad" cx="40%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#FFF5EA"/>
+      <stop offset="70%" stop-color="#FFE0D6"/>
+      <stop offset="100%" stop-color="#FFD1C7"/>
+    </radialGradient>
+    <radialGradient id="joyHeartGrad" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#FF8DA1"/>
+      <stop offset="100%" stop-color="#F43F5E"/>
+    </radialGradient>
+    <filter id="joyShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="1.5" flood-color="#E11D48" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <!-- Heart on Top Left -->
+  <g transform="translate(14, 8) rotate(-18) scale(0.65)" filter="url(#joyShadow)">
+    <path d="M 20 10 C 20 0, 0 0, 0 16 C 0 28, 20 40, 20 40 C 20 40, 40 28, 40 16 C 40 0, 20 0, 20 10 Z" fill="url(#joyHeartGrad)"/>
+    <ellipse cx="12" cy="11" rx="4" ry="2" fill="#FFFFFF" opacity="0.6" transform="rotate(-30, 12, 11)"/>
+  </g>
+
+  <!-- Face Body -->
+  <circle cx="50" cy="54" r="38" fill="url(#joyGrad)" stroke="#FFAAA6" stroke-width="2.5"/>
+
+  <!-- Cheeks Blush -->
+  <ellipse cx="26" cy="58" rx="8" ry="4.5" fill="#FF8DA1" opacity="0.65"/>
+  <ellipse cx="74" cy="58" rx="8" ry="4.5" fill="#FF8DA1" opacity="0.65"/>
+
+  <!-- Happy Curved Eyes -->
+  <path d="M 33 49 Q 41 40 48 49" fill="none" stroke="#543A3A" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M 52 49 Q 59 40 67 49" fill="none" stroke="#543A3A" stroke-width="3.5" stroke-linecap="round"/>
+
+  <!-- Smiling Mouth -->
+  <path d="M 43 57 Q 50 67 57 57" fill="#E11D48" stroke="#543A3A" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 46 59 Q 50 64 54 59" fill="#FFA4B6" opacity="0.8"/>
+
+  <!-- Sparkles -->
+  <circle cx="21" cy="40" r="1.5" fill="#F43F5E" opacity="0.6"/>
+  <circle cx="78" cy="38" r="1.8" fill="#F43F5E" opacity="0.6"/>
+</svg>

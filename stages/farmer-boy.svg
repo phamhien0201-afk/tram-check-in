@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <defs>
+    <radialGradient id="fbBg" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#F5F3FF"/>
+      <stop offset="100%" stop-color="#DDD6FE"/>
+    </radialGradient>
+    <linearGradient id="hatGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FDE047"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background Circle -->
+  <circle cx="50" cy="50" r="46" fill="url(#fbBg)" stroke="#C4B5FD" stroke-width="2.5"/>
+
+  <!-- Body / Overalls -->
+  <path d="M 28 86 Q 28 68 38 68 L 62 68 Q 72 68 72 86 Z" fill="#3B82F6"/>
+  <!-- White Inner Shirt -->
+  <path d="M 38 68 Q 50 74 62 68 L 58 64 Q 50 67 42 64 Z" fill="#FFFFFF"/>
+  <!-- Overalls Straps -->
+  <rect x="36" y="68" width="6" height="18" fill="#1D4ED8" rx="2"/>
+  <rect x="58" y="68" width="6" height="18" fill="#1D4ED8" rx="2"/>
+  <circle cx="39" cy="74" r="1.5" fill="#FACC15"/>
+  <circle cx="61" cy="74" r="1.5" fill="#FACC15"/>
+
+  <!-- Neck -->
+  <rect x="45" y="58" width="10" height="8" fill="#FFEDD5" rx="3"/>
+
+  <!-- Ears -->
+  <circle cx="31" cy="48" r="5" fill="#FFEDD5"/>
+  <circle cx="69" cy="48" r="5" fill="#FFEDD5"/>
+
+  <!-- Face -->
+  <ellipse cx="50" cy="48" rx="19" ry="17" fill="#FFEDD5"/>
+
+  <!-- Brown Hair Back/Sides -->
+  <path d="M 32 45 Q 31 32 50 30 Q 69 32 68 45 Q 64 54 62 50 Q 56 36 50 36 Q 44 36 38 50 Z" fill="#78350F"/>
+  <!-- Bangs -->
+  <path d="M 36 38 Q 42 45 47 40 Q 53 46 63 38 Q 57 33 50 33 Q 43 33 36 38 Z" fill="#78350F"/>
+
+  <!-- Eyes (Anime Chibi Sparkle) -->
+  <ellipse cx="42" cy="48" rx="3.2" ry="4" fill="#312E81"/>
+  <circle cx="43" cy="46.5" r="1.2" fill="#FFFFFF"/>
+  <ellipse cx="58" cy="48" rx="3.2" ry="4" fill="#312E81"/>
+  <circle cx="59" cy="46.5" r="1.2" fill="#FFFFFF"/>
+
+  <!-- Blush -->
+  <ellipse cx="36" cy="52" rx="4.5" ry="2.5" fill="#FB7185" opacity="0.6"/>
+  <ellipse cx="64" cy="52" rx="4.5" ry="2.5" fill="#FB7185" opacity="0.6"/>
+
+  <!-- Sweet Smile -->
+  <path d="M 47 54 Q 50 57 53 54" fill="none" stroke="#78350F" stroke-width="1.8" stroke-linecap="round"/>
+
+  <!-- Straw Hat Crown -->
+  <path d="M 36 28 C 36 14, 64 14, 64 28 Z" fill="url(#hatGrad)"/>
+  <path d="M 36 26 Q 50 29 64 26" fill="none" stroke="#B45309" stroke-width="2.5"/>
+  <!-- Straw Hat Brim -->
+  <ellipse cx="50" cy="28" rx="27" ry="7.5" fill="url(#hatGrad)" stroke="#B45309" stroke-width="1.8"/>
+  <path d="M 36 27 Q 50 30 64 27" fill="none" stroke="#E11D48" stroke-width="2"/>
+</svg>

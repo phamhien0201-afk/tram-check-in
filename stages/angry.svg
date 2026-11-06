@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <defs>
+    <radialGradient id="angryGrad" cx="45%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#FFF1F2"/>
+      <stop offset="70%" stop-color="#FECDD3"/>
+      <stop offset="100%" stop-color="#FDA4AF"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Anger Symbol 💢 on Upper Right -->
+  <g transform="translate(68, 14) scale(0.75)" stroke="#E11D48" stroke-width="2.6" fill="none" stroke-linecap="round">
+    <path d="M 6 2 L 6 18 M 16 2 L 16 18 M 2 6 L 18 6 M 2 14 L 18 14"/>
+  </g>
+
+  <!-- Face Body -->
+  <circle cx="50" cy="52" r="39" fill="url(#angryGrad)" stroke="#E11D48" stroke-width="2.5"/>
+
+  <!-- Cheeks Blush (Flushed Red) -->
+  <ellipse cx="27" cy="58" rx="8" ry="4.5" fill="#F43F5E" opacity="0.6"/>
+  <ellipse cx="73" cy="58" rx="8" ry="4.5" fill="#F43F5E" opacity="0.6"/>
+
+  <!-- Angry Slanted Brows -->
+  <path d="M 33 42 L 47 46" fill="none" stroke="#543A3A" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M 67 42 L 53 46" fill="none" stroke="#543A3A" stroke-width="3.5" stroke-linecap="round"/>
+
+  <!-- Angry Eyes -->
+  <circle cx="39" cy="50" r="4.2" fill="#543A3A"/>
+  <circle cx="40.5" cy="48.5" r="1.5" fill="#FFFFFF"/>
+
+  <circle cx="61" cy="50" r="4.2" fill="#543A3A"/>
+  <circle cx="62.5" cy="48.5" r="1.5" fill="#FFFFFF"/>
+
+  <!-- Pouty Grumpy Frown -->
+  <path d="M 43 62 Q 50 56 57 62" fill="none" stroke="#543A3A" stroke-width="3.2" stroke-linecap="round"/>
+</svg>
