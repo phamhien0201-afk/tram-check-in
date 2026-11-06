@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <defs>
+    <radialGradient id="sadGrad" cx="45%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#F0F9FF"/>
+      <stop offset="70%" stop-color="#BAE6FD"/>
+      <stop offset="100%" stop-color="#7DD3FC"/>
+    </radialGradient>
+    <radialGradient id="tearGrad" cx="30%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#E0F2FE"/>
+      <stop offset="60%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#0284C7"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Face Body -->
+  <circle cx="50" cy="50" r="39" fill="url(#sadGrad)" stroke="#0284C7" stroke-width="2.5"/>
+
+  <!-- Cheeks Blush -->
+  <ellipse cx="27" cy="56" rx="7" ry="4" fill="#60A5FA" opacity="0.4"/>
+  <ellipse cx="73" cy="56" rx="7" ry="4" fill="#60A5FA" opacity="0.4"/>
+
+  <!-- Sad Drooping Eyebrows -->
+  <path d="M 33 39 Q 40 35 46 39" fill="none" stroke="#543A3A" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M 67 39 Q 60 35 54 39" fill="none" stroke="#543A3A" stroke-width="2.6" stroke-linecap="round"/>
+
+  <!-- Sad Glossy Watery Eyes -->
+  <circle cx="39" cy="48" r="4.8" fill="#543A3A"/>
+  <circle cx="41" cy="46" r="2" fill="#FFFFFF"/>
+  <circle cx="38" cy="50" r="1" fill="#FFFFFF"/>
+
+  <circle cx="61" cy="48" r="4.8" fill="#543A3A"/>
+  <circle cx="63" cy="46" r="2" fill="#FFFFFF"/>
+  <circle cx="60" cy="50" r="1" fill="#FFFFFF"/>
+
+  <!-- Downturned Pouty Mouth -->
+  <path d="M 44 61 Q 50 56 56 61" fill="none" stroke="#543A3A" stroke-width="2.8" stroke-linecap="round"/>
+
+  <!-- Streaming Teardrops on both sides -->
+  <g transform="translate(30, 52) scale(0.55)">
+    <path d="M 10 0 C 10 0, 0 14, 0 22 C 0 30, 6 34, 10 34 C 14 34, 20 30, 20 22 C 20 14, 10 0, 10 0 Z" fill="url(#tearGrad)"/>
+    <ellipse cx="6" cy="20" rx="3" ry="5" fill="#FFFFFF" opacity="0.75" transform="rotate(-20, 6, 20)"/>
+  </g>
+  <g transform="translate(62, 52) scale(0.55)">
+    <path d="M 10 0 C 10 0, 0 14, 0 22 C 0 30, 6 34, 10 34 C 14 34, 20 30, 20 22 C 20 14, 10 0, 10 0 Z" fill="url(#tearGrad)"/>
+    <ellipse cx="6" cy="20" rx="3" ry="5" fill="#FFFFFF" opacity="0.75" transform="rotate(-20, 6, 20)"/>
+  </g>
+</svg>

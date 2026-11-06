@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <defs>
+    <radialGradient id="tiredGrad" cx="45%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#FAF5FF"/>
+      <stop offset="70%" stop-color="#E9D5FF"/>
+      <stop offset="100%" stop-color="#D8B4FE"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Floating Z Z Letters on Upper Right -->
+  <g transform="translate(68, 12)" fill="#818CF8">
+    <!-- Big Z -->
+    <path d="M 12 6 L 22 6 L 14 16 L 23 16" fill="none" stroke="#6366F1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Small z -->
+    <path d="M 4 18 L 10 18 L 5 24 L 11 24" fill="none" stroke="#818CF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Face Body -->
+  <circle cx="50" cy="52" r="39" fill="url(#tiredGrad)" stroke="#9333EA" stroke-width="2.5"/>
+
+  <!-- Cheeks Blush -->
+  <ellipse cx="27" cy="58" rx="7" ry="4" fill="#C084FC" opacity="0.45"/>
+  <ellipse cx="73" cy="58" rx="7" ry="4" fill="#C084FC" opacity="0.45"/>
+
+  <!-- Sleepy Half-Closed Eyes -->
+  <path d="M 33 48 L 47 48" fill="none" stroke="#543A3A" stroke-width="3.2" stroke-linecap="round"/>
+  <path d="M 53 48 L 67 48" fill="none" stroke="#543A3A" stroke-width="3.2" stroke-linecap="round"/>
+  
+  <path d="M 36 50 Q 40 53 44 50" fill="none" stroke="#543A3A" stroke-width="2" stroke-linecap="round"/>
+  <path d="M 56 50 Q 60 53 64 50" fill="none" stroke="#543A3A" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Slanted Sleepy Mouth -->
+  <path d="M 45 59 Q 50 61 55 58" fill="none" stroke="#543A3A" stroke-width="2.8" stroke-linecap="round"/>
+</svg>
